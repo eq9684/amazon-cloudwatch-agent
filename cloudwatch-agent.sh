@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo yum install amazon-cloudwatch-agent -y > /amazon-cloudwatch-agent.log
-cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
+sudo cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
 {
 	"agent": {
 		"metrics_collection_interval": 60,
@@ -43,4 +43,4 @@ cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
 	}
 }
 EOF
-/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
