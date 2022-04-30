@@ -44,3 +44,8 @@ sudo cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
 }
 EOF
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+echo "0 4 * * 7 root yum update -y" >> /etc/crontab
+echo "0 6 * * 7 root shutdown -r now" >> /etc/crontab
+
+
