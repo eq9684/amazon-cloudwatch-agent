@@ -7,17 +7,6 @@ sudo cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
 		"run_as_user": "root"
 	},
 	"metrics": {
-		"aggregation_dimensions": [
-			[
-				"InstanceId"
-			]
-		],
-		"append_dimensions": {
-			"AutoScalingGroupName": "\${aws:AutoScalingGroupName}",
-			"ImageId": "\${aws:ImageId}",
-			"InstanceId": "\${aws:InstanceId}",
-			"InstanceType": "\${aws:InstanceType}"
-		},
 		"metrics_collected": {
 			"disk": {
 				"measurement": [
@@ -25,7 +14,7 @@ sudo cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
 				],
 				"metrics_collection_interval": 60,
 				"resources": [
-					"*"
+					"/"
 				]
 			},
 			"mem": {
@@ -34,11 +23,7 @@ sudo cat >/opt/aws/amazon-cloudwatch-agent/bin/config.json<<EOF
 				],
 				"metrics_collection_interval": 60
 			},
-			"statsd": {
-				"metrics_aggregation_interval": 60,
-				"metrics_collection_interval": 10,
-				"service_address": ":8125"
-			}
+			"collectd": {}
 		}
 	}
 }
