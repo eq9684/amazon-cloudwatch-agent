@@ -7,7 +7,7 @@ mkdir /etc/collectd
 echo "collectd: collectd" > /etc/collectd/auth_file
 
 sed -i '0,/Hostname/{s/#Hostname/Hostname/}' /etc/collectd.conf
-sed -i '0,/localhost/{s/localhost/"`hostname`"/}' /etc/collectd.conf
+sed -i '0,/localhost/{s/localhost/'`hostname`'/}' /etc/collectd.conf
 sed -i '0,/FQDNLookup/{s/#FQDNLookup/FQDNLookup/}' /etc/collectd.conf
 sed -i '0,/BaseDir/{s/#BaseDir/BaseDir/}' /etc/collectd.conf
 sed -i '0,/PIDFile/{s/#PIDFile/PIDFile/}' /etc/collectd.conf
